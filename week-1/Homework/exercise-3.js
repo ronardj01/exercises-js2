@@ -17,7 +17,7 @@ let coffeeMachine = {
     },
     insertedAmount: 0,
     insertMoney: function (amount) {
-      return this.insertedAmount = amount;
+      this.insertedAmount = amount;
     },
     getCoffee: function (coffee) {
       if(this.insertedAmount >= this.prices[coffee]){
