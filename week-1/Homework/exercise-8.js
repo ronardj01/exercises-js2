@@ -41,21 +41,21 @@ function removeSkill(mentors,newSkill){
 function addStudentLikes(mentors){
   //your code here
 }
-*/ 
+*/
 
 var mentors = [
   {
     firstName: "Antonio",
     lastName: "Miranda",
-    skills: ["JS","React","Node"],
+    skills: ["JS", "React", "Node"],
     class: "Mar1",
     studentLikes: 0,
     job:
-      {
-        company: "Google",
-        position: "Senior developer",
-        city: "Barcelona"
-      }
+    {
+      company: "Google",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "Leo",
@@ -64,40 +64,81 @@ var mentors = [
     class: "Mar3",
     studentLikes: 0,
     job:
-      {
-        company: "FC Barcelona",
-        position: "Player",
-        city: "Barcelona"
-      }
+    {
+      company: "FC Barcelona",
+      position: "Player",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "John",
     lastName: "VanDamme",
-    skills: ["React","Angular","Python","Node"],
+    skills: ["React", "Angular", "Python", "Node"],
     class: "Mar4",
     studentLikes: 0,
     job:
-      {
-        company: "Facebook",
-        position: "Software Manager",
-        city: "Chicago"
-      }
-  },  
+    {
+      company: "Facebook",
+      position: "Software Manager",
+      city: "Chicago"
+    }
+  },
   {
     firstName: "Giorgio",
     lastName: "Polvara",
-    skills: ["HTML","JS","React"],
+    skills: ["HTML", "JS", "React"],
     class: "Mar2",
     studentLikes: 0,
     job:
-      {
-        company: "Amazon",
-        position: "Senior developer",
-        city: "Barcelona"
-      }
+    {
+      company: "Amazon",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
 
 ];
 
 //YOUR CODE HERE
+// Muestra por conssola los mentores que viven en Barcelona y tienen React como una de sus skills.
+mentors.forEach(
+  function (mentor) {
+    if (mentor.job.city === "Barcelona" && mentor.skills.includes("React"))
+      console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. I work in Barcelona and i know React.`)
+  })
+
+//Configura Jun1 como class y agrega SQL como nuevo skill a los mentores que viven en Barcelona.
+mentors.forEach(
+  function (mentor) {
+    if (mentor.job.city === "Barcelona") {
+      mentor.class = "Jun1";
+      mentor.skills.push("SQL")
+    }
+  }
+)
+
+//Crea el metodo addSkills a todos los objetos.
+mentors.forEach(function (mentor) {
+  mentor.addSkills =
+    function (newSkill) {
+      this.skills.push(newSkill)
+    }
+})
+//Agrega un skill a todos los mentores.
+function addSkilltoAll(mentors, newSkill) {
+  mentors.forEach(mentor => mentor.addSkills(newSkill))
+}
+addSkilltoAll(mentors, "Kotlin") //Prueba de la funcion addSkilltoAll
+
+//Elimina un skill a todos los mentores.
+function removeSkill(mentors, newSkill) {
+  return mentors.map(
+    function(mentor) {
+      mentor.skills = mentor.skills.filter(skill => skill !== newSkill)
+    }
+  )
+} 
+removeSkill(mentors, "React")//Prueba de la funcion removeSkill. 
+console.log(mentors)
+
 
