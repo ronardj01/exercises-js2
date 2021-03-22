@@ -41,24 +41,47 @@ var product2 = {
   price: 9.99,
   stock: 2
 };
+var product3 = {
+  id: 3,
+  name: "Blender Aicook3",
+  price: 59.99,
+  stock: 37
+};
+var product4 = {
+  id: 4,
+  name: "Hisense ULED TV 55U71QF",
+  price: 709.99,
+  stock: 22
+}
+
 
 products.push(product1);
 products.push(product2);
+products.push(product3);
+products.push(product4);
 
 var shoppingCart = {
   totalPrice: 0,
   selectedProducts: []
 };
 
-function addToShoppingCart(id){
-
+function addToShoppingCart(id) {
+  products.forEach(function (producto) {
+    if (producto.id === id) {
+      shoppingCart.selectedProducts.push(producto);
+      shoppingCart.totalPrice += producto.price;
+    }
+  })
 }
 
-function removeFromShoppingCart(id){
-
+function removeFromShoppingCart(id) {
+  let productsNotRemoved = shoppingCart.selectedProducts.filter(producto => producto.id !== id)
+  shoppingCart.selectedProducts = productsNotRemoved
+  shoppingCart.totalPrice = productsNotRemoved.map(
+    producto => producto.price).reduce((acomulador, valorActual) => acomulador + valorActual)
 }
 
-function shop(){
+function shop() {
 
 }
 
@@ -67,24 +90,24 @@ addToShoppingCart(1);
 console.log("Step 1");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p => p.name));
 addToShoppingCart(2);
 console.log("Step 2");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p => p.name));
 addToShoppingCart(4);
 console.log("Step 3");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p => p.name));
 removeFromShoppingCart(2);
 console.log("Step 4");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p => p.name));
 shop();
 console.log("Step 5");
 console.log("Total Price = " + shoppingCart.totalPrice);
 console.log("Number of Elements = " + shoppingCart.selectedProducts.length);
-console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p=>p.name));
+console.log("Name of Elements = " + shoppingCart.selectedProducts.map(p => p.name));
