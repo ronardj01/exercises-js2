@@ -100,7 +100,7 @@ var mentors = [
 ];
 
 //YOUR CODE HERE
-// Muestra por conssola los mentores que viven en Barcelona y tienen React como una de sus skills.
+// Muestra por consola los mentores que viven en Barcelona y tienen React como una de sus skills.
 mentors.forEach(
   function (mentor) {
     if (mentor.job.city === "Barcelona" && mentor.skills.includes("React"))
@@ -133,12 +133,38 @@ addSkilltoAll(mentors, "Kotlin") //Prueba de la funcion addSkilltoAll
 //Elimina un skill a todos los mentores.
 function removeSkill(mentors, newSkill) {
   return mentors.map(
-    function(mentor) {
+    function (mentor) {
       mentor.skills = mentor.skills.filter(skill => skill !== newSkill)
     }
   )
-} 
+}
 removeSkill(mentors, "React")//Prueba de la funcion removeSkill. 
+
+//Muestra por consola el mentor con mas skills o varios en caso de estar igualados.
+function mentorWithMoreSkills(mentors) {
+  let orderedMentor = mentors.sort((a, b) =>
+    b.skills.length - a.skills.length);
+
+  let numbreMaxOfSkills = orderedMentor[0].skills.length; //Determina el mayor numero de skills
+
+  return mentors.filter(mentor => mentor.skills.length === numbreMaxOfSkills).map(
+    mentor => mentor.firstName) //Retorna los nombres de todos los mentores igualados al mayor numero de skills
+}
+console.log(mentorWithMoreSkills(mentors)) // prueba de mentorWithMoreSkills
+
+//Crea el metodo addStudentLikes() que incrementa en 1 la propiedad studentsLikes.
+mentors.forEach(function (mentor) {
+  mentor.addStudentLikes = 
+  function () {
+   return this.studentLikes++  
+  }
+})
+
+//Agrega un like a todos los mentores.
+function addLikesToAll(mentors) {
+  mentors.forEach(mentor => mentor.addStudentLikes())
+}
+addLikesToAll(mentors)
+addLikesToAll(mentors) //Prueba de addLikesToAll dos veces.
+
 console.log(mentors)
-
-
