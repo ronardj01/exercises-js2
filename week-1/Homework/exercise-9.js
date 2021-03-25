@@ -76,13 +76,14 @@ function addToShoppingCart(id) {
 
 function removeFromShoppingCart(id) {
   let productsNotRemoved = shoppingCart.selectedProducts.filter(producto => producto.id !== id)
-  shoppingCart.selectedProducts = productsNotRemoved
+  shoppingCart.selectedProducts = productsNotRemoved;
   shoppingCart.totalPrice = productsNotRemoved.map(
-    producto => producto.price).reduce((acomulador, valorActual) => acomulador + valorActual)
+    producto => producto.price).reduce((acomulador, valorActual) => acomulador + valorActual);
 }
 
 function shop() {
-
+  shoppingCart.selectedProducts = [];
+  shoppingCart.totalPrice = 0;
 }
 
 //results
