@@ -15,8 +15,8 @@
  */
 function exerciseOne(arrayOfPeople) {
   let content = document.querySelector("#content");
-  
-  arrayOfPeople.forEach(function (persona){
+
+  arrayOfPeople.forEach(function (persona) {
     let h1 = document.createElement('h1');
     let h2 = document.createElement('h2');
     content.appendChild(h1);
@@ -24,7 +24,7 @@ function exerciseOne(arrayOfPeople) {
     h1.innerText = persona.name;
     h2.innerText = persona.job;
   })
-  
+
 }
 
 /**
@@ -34,8 +34,20 @@ function exerciseOne(arrayOfPeople) {
  * All of your HTML should go inside the Div tag with the id "content".
  *
  */
+
 function exerciseTwo(shopping) {
   //Write your code in here
+  let listaDesordenada = document.getElementById('content');
+  let ul = document.createElement('ul');// como poner una clase aqui???????
+  listaDesordenada.appendChild(ul);
+
+  let elementosLista = document.querySelector('div#content ul');
+  shopping.forEach(function (articulo) {
+    let li = document.createElement('li');
+    elementosLista.appendChild(li)
+    li.innerText = articulo
+  } )
+
 }
 
 /**
