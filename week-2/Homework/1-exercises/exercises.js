@@ -37,16 +37,16 @@ function exerciseOne(arrayOfPeople) {
 
 function exerciseTwo(shopping) {
   //Write your code in here
-  let listaDesordenada = document.getElementById('content');
-  let ul = document.createElement('ul');// como poner una clase aqui???????
+  const listaDesordenada = document.getElementById('content');
+  const ul = document.createElement('ul');
   listaDesordenada.appendChild(ul);
 
-  let elementosLista = document.querySelector('div#content ul');
+  const elementosLista = document.querySelector('div#content ul');
   shopping.forEach(function (articulo) {
     let li = document.createElement('li');
-    elementosLista.appendChild(li)
-    li.innerText = articulo
-  } )
+    elementosLista.appendChild(li);
+    li.innerText = articulo;
+  })
 
 }
 
@@ -81,6 +81,31 @@ function exerciseTwo(shopping) {
 **/
 function exerciseThree(books) {
   //Write your code in here
+
+  const nuevoDiv = document.querySelector('#content');
+  const div = document.createElement('div');
+  nuevoDiv.appendChild(div).className = 'book-list';
+
+  const booksContent = document.querySelector('.book-list');
+  const h1 = document.createElement('h1');
+  booksContent.appendChild(h1);
+  h1.innerText = 'Books List'
+
+  const listaLibros = document.querySelector('.book-list');
+  const ul = document.createElement('ul');
+  listaLibros.appendChild(ul);
+
+  let libro = document.querySelector('.book-list ul')
+  books.forEach(function (book) {
+    let li = document.createElement('li');
+    libro.appendChild(li);
+    li.innerHTML = `<p>${book.title}-${book.author}</p> <img src=>`
+      if(book.alreadyRead) {
+        li.style.backgroundColor = 'green'
+      } else {
+        li.style.backgroundColor = 'red'
+      }
+  })
 }
 
 //
