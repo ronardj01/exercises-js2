@@ -82,6 +82,13 @@ function removeFromShoppingCart(id) {
 }
 
 function shop() {
+  //Reduce en uno el stock de un producto.
+  products.map(function (producto) {
+    if (shoppingCart.selectedProducts.includes(producto)) {
+      producto.stock--
+    }
+  })
+//Vacia el carrito de compras y pone el precio en cero.
   shoppingCart.selectedProducts = [];
   shoppingCart.totalPrice = 0;
 }
