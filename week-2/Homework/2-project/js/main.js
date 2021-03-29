@@ -31,14 +31,33 @@ botonGreen.addEventListener('click', () => changingTheme(tema[2])); */
 const submitBtn = document.querySelector('form button');
 const emailField = document.querySelector('#exampleInputEmail1');
 const yourNameField = document.querySelector('#example-text-input');
-const describeYourselfField = document.querySelector('exampleTextarea');
+const describeYourselfField = document.querySelector('#exampleTextarea');
 
 //2.1 Funcionalidad del boton submit para la validacion de los campos.
 function validateFields(event) {
   event.preventDefault();
-  if (emailField.value.length > 0 && emailField.value.includes('@')) {
-    alert('jajaja')
+  let isValid = true;
+  let arrayOfFields = [emailField, yourNameField, describeYourselfField]
+  //Limpiar todos los background color de los campos.
+  arrayOfFields.forEach(field => field.style.backgroundColor = 'white')
+  //Validar condiciones de los campos.
+  if (!(emailField.value.length > 0 && emailField.value.includes('@'))) {
+    emailField.style.backgroundColor = 'tomato';
+    isValid = false;
   }
+  if(!yourNameField.value.length > 0) {
+    yourNameField.style.backgroundColor = 'tomato';
+    isValid = false;
+  }
+  if(!describeYourselfField.value.length > 0) {
+    describeYourselfField.style.backgroundColor = 'tomato';
+    isValid = false;
+  }
+ //Verifica que todos los campos cumplen las condiciones 
+ if(isValid) {
+   alert('thank you for filling out the form');
+   arrayOfFields.forEach(field => field.value = " ");
+ }
 }
 
 submitBtn.addEventListener('click', validateFields);
