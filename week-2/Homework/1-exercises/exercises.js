@@ -94,17 +94,30 @@ function exerciseThree(books) {
   const listaLibros = document.querySelector('.book-list');
   const ul = document.createElement('ul');
   listaLibros.appendChild(ul);
+  ul.style.listStyle = 'none';
+  ul.style.display = 'flex';
+  ul.style.flexWrap = 'wrap';
+  ul.style.padding = '20px';
 
-  let libro = document.querySelector('.book-list ul')
-  books.forEach(function (book) {
+  let libro = document.querySelector('.book-list ul');
+  let img1 = "./img/design-of-everyday-things.jpg";
+  let img2 = "./img/the-most-human-human.jpg";
+  let img3 = "./img/the-pragmatic-programmer.jpg";
+  let arrayOfBooksImages = [img1, img2, img3];
+  books.forEach(function (book, index) {
     let li = document.createElement('li');
     libro.appendChild(li);
-    li.innerHTML = `<p>${book.title}-${book.author}</p> <img src=>`
-      if(book.alreadyRead) {
-        li.style.backgroundColor = 'green'
-      } else {
-        li.style.backgroundColor = 'red'
-      }
+    li.innerHTML =
+      `<p>${book.title}-${book.author}</p>
+      <img src="${arrayOfBooksImages[index]}">`
+    li.style.margin = '15px';
+    li.style.padding = '10px';
+    li.style.minWidth = '350px';
+    if (book.alreadyRead) {
+      li.style.backgroundColor = 'green'
+    } else {
+      li.style.backgroundColor = 'red'
+    }
   })
 }
 

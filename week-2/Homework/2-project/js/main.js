@@ -9,19 +9,39 @@ const botonNaranja = document.querySelector('#orangeBtn');
 const botonGreen = document.querySelector('#greenBtn');
 
 let tema = [
-  { nombre: 'tema azul', jumbotron: '#588fbd', donate: '#ffa500', volunteerBG: 'black', volunteerColor: 'white' },
-  { nombre: 'tema naranja', jumbotron: '#f0ad4e', donate: '#5751fd', volunteerBG: '#31b0d5', volunteerColor: 'white' },
-  { nombre: 'tema verde', jumbotron: '#87ca8a', donate: 'black', volunteerBG: '#8c9c08', volunteerColor: 'black' },
+  { nombre: 'tema azul', jumbotron: '#588fbd', donate: '#ffa500', volunteer: { background: 'black', color: 'white' } },
+  { nombre: 'tema naranja', jumbotron: '#f0ad4e', donate: '#5751fd', volunteer: { background: '#31b0d5', color: 'white' } },
+  { nombre: 'tema verde', jumbotron: '#87ca8a', donate: 'black', volunteer: { background: '#8c9c08', color: 'black' } },
 ]
-let temaAzul = ['#588fbd', 'ffa500', 'black', 'white']
-//2. Funcionalidad del boton azul.
-function changingTheme(boton, obj) {
-divContent.style.backgroundColor = obj.jumbotron;
-donateBtn.style.backgroundColor = obj.donate;
-volunteerBtn.style.backgroundColor = obj.volunteerBG;
-volunteerBtn.style.color = obj.volunteerColor;
+
+//1.3 Funcionalidad de los botones para el cambio de tema.
+function changingTheme(obj) {
+  divContent.style.backgroundColor = obj.jumbotron;
+  donateBtn.style.backgroundColor = obj.donate;
+  volunteerBtn.style.backgroundColor = obj.volunteer.background;
+  volunteerBtn.style.color = obj.volunteer.color;
 }
 
-botonAzul.addEventListener('click', () => changingTheme(botonAzul, tema[0]));
-botonNaranja.addEventListener('click', () => changingTheme(botonNaranja, tema[1]));
-botonGreen.addEventListener('click', (e) => changingTheme(e.target, tema[2]));
+/* botonAzul.addEventListener('click', () => changingTheme(tema[0]));
+botonNaranja.addEventListener('click', () => changingTheme(tema[1]));
+botonGreen.addEventListener('click', () => changingTheme(tema[2])); */
+[botonAzul, botonNaranja, botonGreen].forEach((boton, index) => boton.addEventListener('click', () => changingTheme(tema[index])))
+
+//2. Declaracion de las variables globales.
+const submitBtn = document.querySelector('form button');
+const emailField = document.querySelector('#exampleInputEmail1');
+const yourNameField = document.querySelector('#example-text-input');
+const describeYourselfField = document.querySelector('exampleTextarea');
+
+//2.1 Funcionalidad del boton submit para la validacion de los campos.
+function validateFields(event) {
+  event.preventDefault();
+  if (emailField.value.length > 0 && emailField.value.includes('@')) {
+    alert('jajaja')
+  }
+}
+
+submitBtn.addEventListener('click', validateFields);
+
+
+
