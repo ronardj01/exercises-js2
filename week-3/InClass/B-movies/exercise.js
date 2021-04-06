@@ -57,11 +57,60 @@ var movies = [
     haveWatched: false,
   },
 ];
+//Declaracion de variables globales.
+let containerMovieDescription = document.querySelector('#all-movies');
+let numberOfMovies = document.querySelector('#movies-number');
 
 // create showMovies function
-
+// Task 1
+function showMovies() {
+  setTimeout(() => {
+    numberOfMovies.innerText = movies.length;
+    movies.forEach(movie => {
+      let p = document.createElement('p');
+      containerMovieDescription.appendChild(p);
+      p.innerText = `TITLE: ${movie.title} - DIRECTOR: ${movie.director}`;
+    })
+  }, 1000)
+}
 
 // create a new movie object for your favorite movie
-
+//Task 2
+let myMovie = {
+  title: "The Sixth Sense",
+  director: "Manoj Nelliyattu Shyamalan",
+  type: "psychological thriller",
+  haveWatched: true,
+}
 
 // create addMovies function
+function addMovie(movie) {
+  setTimeout(() => {
+    movies.push(movie)
+    showMovies() // Task 3
+  }
+    , 2000)
+
+}
+//Llamando la funcion addMovie y luego showMovies 
+addMovie(myMovie);
+
+//Task 4
+/* Task 4
+When the button is clicked
+- The field values should be used to create a new movie object literal
+- The new movie is then added to the list of movies and gets displayed on your page
+TIP: Use the functions you created on tasks 1-3*/
+let jumbotronDiv = document.querySelector('div.jumbotron')
+let newDiv = document.createElement('div');
+jumbotronDiv.appendChild(newDiv).id = 'form-div';
+
+let form = document.createElement('form');
+newDiv.appendChild(form).id = 'new-movie';
+
+form.innerHTML =
+ `<input id="titleTextField" type="text" placeholder="Title"/>
+  <input id="directorTextField" type="text" placeholder="Director"/>
+  <input id="typeTextField" type="text" placeholder="Type"/>
+  <input id="haveWatchedTextField" type="text" placeholder="haveWatchedTextField"/>
+  <input id="submitButton" type="submit" value="save"/>`

@@ -38,8 +38,10 @@ function validateFields(event) {
   event.preventDefault();
   let isValid = true;
   let arrayOfFields = [emailField, yourNameField, describeYourselfField]
+  
   //Limpiar todos los background color de los campos.
   arrayOfFields.forEach(field => field.style.backgroundColor = 'white')
+  
   //Validar condiciones de los campos.
   if (!(emailField.value.length > 0 && emailField.value.includes('@'))) {
     emailField.style.backgroundColor = 'tomato';
@@ -53,7 +55,7 @@ function validateFields(event) {
     describeYourselfField.style.backgroundColor = 'tomato';
     isValid = false;
   }
- //Verifica que todos los campos cumplen las condiciones 
+ //Verifica que todos los campos cumplen las condiciones y limpia los valores de los campos.
  if(isValid) {
    alert('thank you for filling out the form');
    arrayOfFields.forEach(field => field.value = " ");
