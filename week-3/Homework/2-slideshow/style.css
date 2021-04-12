@@ -1,1 +1,24 @@
 /** Write your CSS in here **/
+h1 {
+   margin-top: 1rem; 
+   text-align: center; 
+}
+
+img {
+    display: block;
+    margin: auto;
+ }
+
+div {
+    margin-bottom: 1rem;
+}
+
+div#botones {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 3px;
+    border: solid 1px black;
+}
